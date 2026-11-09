@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王清越 - 個人專業作品集</title>
+    <!-- Google Fonts: 引入標準 Noto Sans TC 與 Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================================================
+           1. 變數與基礎設定 (Light Professional Theme)
+           ========================================================================== */
+        :root {
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --brand-blue: #2563eb;
+            --brand-blue-hover: #1d4ed8;
+            --brand-blue-light: #eff6ff;
+            --border-color: #e2e8f0;
+            --border-accent: #cbd5e1;
+            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --font-sans: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ==========================================================================
+           2. 導覽列 (Navbar)
+           ========================================================================== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 8%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+        }
+
+        .nav-brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--brand-blue);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-blue);
+        }
+
+        /* ==========================================================================
+           3. 主要內容區域 (Main Container)
+           ========================================================================== */
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        /* Hero / Profile Header Section */
+        .hero-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .avatar-container {
+            flex-shrink: 0;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--brand-blue), #60a5fa);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #f1f5f9;
+            border: 3px solid #ffffff;
+        }
+
+        .hero-info {
+            flex: 1;
+        }
+
+        .hero-name {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 0.4rem;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: var(--brand-blue-light);
+            color: var(--brand-blue);
+            font-weight: 600;
+            font-size: 0.875rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-intro {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Clean Content Card */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-accent);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .card-body p {
+            color: var(--text-secondary);
+            font-size: 1.025rem;
+            line-height: 1.7;
+        }
+
+        /* Goal & Skills Section Specifics */
+        .goal-box {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .goal-target {
+            font-weight: 700;
+            color: var(--brand-blue);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 10px;
+            background-color: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .progress-bar-fill {
+            width: 0%;
+            height: 100%;
+            background-color: var(--brand-blue);
+            border-radius: 5px;
+            transition: width 1.5s ease-out;
+        }
+
+        /* Contact Details List */
+        .contact-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+        }
+
+        .contact-icon {
+            width: 42px;
+            height: 42px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-value {
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .contact-value:hover {
+            color: var(--brand-blue);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-card);
+        }
+
+        /* Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 640px) {
+            .hero-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+            .nav-links {
+                gap: 1rem;
+            }
+            .container {
+                padding-top: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="nav-brand">王清越 Portfolio</a>
+        <ul class="nav-links">
+            <li><a href="#about">關於我</a></li>
+            <li><a href="#skills">學習目標</a></li>
+            <li><a href="#contact">聯絡方式</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Hero Card -->
+        <section class="hero-card reveal">
+            <div class="avatar-container">
+                <!-- 大頭貼預留位置：放 profile.jpg 在同目錄即可 -->
+                <img src="profile.jpg" alt="王清越 Profile Picture" class="avatar-img" onerror="this.src='https://via.placeholder.com/130/eff6ff/2563eb?text=Qingyue'">
+            </div>
+            <div class="hero-info">
+                <h1 class="hero-name">王清越</h1>
+                <span class="hero-tag">數位多媒體科系</span>
+                <p class="hero-intro">「您好，我是清越，我对写代码很感兴趣。」</p>
+            </div>
+        </section>
+
+        <!-- About / Interests Section -->
+        <section id="about" class="card reveal">
+            <div class="card-header">
+                <h2 class="card-title">我的興趣</h2>
+            </div>
+            <div class="card-body">
+                <p>我对写代码很感兴趣，想学习更多关于编程的知识。</p>
+            </div>
+        </section>
+
+        <!-- Goals & Skills Section -->
+        <section id="skills" class="card reveal">
+            <div class="card-header">
+                <h2 class="card-title">技能 / 學習目標</h2>
+            </div>
+            <div class="card-body">
+                <p>結合數位多媒體基礎，積極投入程式設計與開發邏輯的訓練。</p>
+                <div class="goal-box">
+                    <div class="goal-target">核心目標：獨立遊戲開發</div>
+                    <p>「我的目标是学会写代码，然后自己开发一款游戏。」</p>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="progressFill"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="card reveal">
+            <div class="card-header">
+                <h2 class="card-title">聯繫方式</h2>
+            </div>
+            <div class="card-body">
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <span class="contact-label">Email</span>
+                            <a href="mailto:tor000op5@gmail.com" class="contact-value">tor000op5@gmail.com</a>
+                        </div>
+                    </li>
+                    <li class="contact-item">
+                        <div class="contact-icon">💬</div>
+                        <div>
+                            <span class="contact-label">Line ID</span>
+                            <span class="contact-value">thanaphat_3112</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© <span id="year"></span> 王清越 (Wang Qing-Yue). Clean Code & Professional Single-Page Portfolio.</p>
+    </footer>
+
+    <!-- Clean & Virus-Free Vanilla JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. 自動填寫 Footer 年份
+            const yearEl = document.getElementById('year');
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
+            }
+
+            // 2. 滾動淡入動畫 (Scroll Reveal)
+            const revealElements = document.querySelectorAll('.reveal');
+            const handleScroll = function() {
+                const windowHeight = window.innerHeight;
+                revealElements.forEach(function(el) {
+                    const elementTop = el.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - 50) {
+                        el.classList.add('active');
+                    }
+                });
+            };
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // 初次載入執行檢查
+
+            // 3. 進度條滾動觸發動畫
+            const progressFill = document.getElementById('progressFill');
+            const skillsSection = document.getElementById('skills');
+            let progressAnimated = false;
+
+            const animateProgress = function() {
+                if (skillsSection && progressFill && !progressAnimated) {
+                    const rect = skillsSection.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 80) {
+                        progressFill.style.width = '45%'; // 象徵學習進度
+                        progressAnimated = true;
+                    }
+                }
+            };
+            window.addEventListener('scroll', animateProgress);
+            animateProgress();
+        });
+    </script>
+</body>
+</html>
